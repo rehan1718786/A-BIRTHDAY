@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>FOR AFRAH ❤️</title>
+
+<style>
+body {
+    margin: 0;
+    font-family: 'Poppins', sans-serif;
+    color: #4a004a;
+    text-align: center;
+    overflow-x: hidden;
+    background: linear-gradient(135deg, #ffe6f0, #ffcce0, #ffb3d9);
+    background-size: 400% 400%;
+    animation: bgMove 10s ease infinite;
+}
+
+@keyframes bgMove {
+    0% {background-position: 0%;}
+    50% {background-position: 100%;}
+    100% {background-position: 0%;}
+}
+
+/* PARTICLES */
+.particle {
+    position: fixed;
+    width: 5px;
+    height: 5px;
+    background: #ff66b2;
+    opacity: 0.6;
+    animation: float 10s linear infinite;
+}
+
+@keyframes float {
+    from {transform: translateY(100vh);}
+    to {transform: translateY(-10vh);}
+}
+
+/* LOADER */
+#loader {
+    position: fixed;
+    width: 100%;
+    height: 100vh;
+    background: #ffe6f0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.5rem;
+}
+
+/* CONTAINER */
+.container {
+    display: none;
+    padding: 30px;
+    backdrop-filter: blur(10px);
+}
+
+/* TYPEWRITER */
+#typewriter {
+    font-size: 2.5rem;
+    border-right: 2px solid #ff66b2;
+    color: #cc0066;
+    text-shadow: 0 0 10px #ff99cc;
+}
+
+/* BUTTON */
+button {
+    padding: 12px 25px;
+    border-radius: 30px;
+    border: none;
+    background: linear-gradient(45deg, #ff4d6d, #ff99cc);
+    color: white;
+    cursor: pointer;
+    margin: 10px;
+    box-shadow: 0 0 10px #ff99cc;
+}
+
+/* GALLERY */
+.gallery {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.gallery img {
+    width: 140px;
+    margin: 10px;
+    border-radius: 20px;
+    transition: 0.4s;
+}
+
+.gallery img:hover {
+    transform: scale(1.15);
+    box-shadow: 0 0 15px #ff66b2;
+}
+
+/* CHAT */
+.chat {
+    max-width: 300px;
+    margin: 20px auto;
+    text-align: left;
+}
+
+.bubble {
+    padding: 10px;
+    margin: 10px;
+    border-radius: 15px;
+    background: #ff80bf;
+    color: white;
+}
+
+/* FADE TEXT */
+.fadeText {
+    opacity: 0;
+    transition: 2s;
+    margin: 20px;
+}
+
+/* FINAL */
+.final {
+    font-size: 1.2rem;
+    color: #99004d;
+}
+</style>
+</head>
+
+<body>
+
+<div id="loader">PREPARING SOMETHING SPECIAL FOR U.... 🎁</div>
+
+<div class="container" id="main">
+
+<h1 id="typewriter"></h1>
+
+<button onclick="startMusic()">🎧 TAP HERE FIRST</button>
+<audio id="music" src="song.mp3"></audio>
+
+<div id="scene1" class="fadeText">WAIT… DON’T RUSH👀</div>
+<div id="scene2" class="fadeText">I MADE THIS JUST FOR U....</div>
+<div id="scene3" class="fadeText">BECAUSE U ARE REALLY SPECIAL TO ME.. ❤️</div>
+
+<h2>Our Memories 📸</h2>
+<div class="gallery">
+<img src="photo1.jpg">
+<img src="photo2.jpg">
+<img src="photo3.jpg">
+<img src="photo4.jpg">
+<img src="photo5.jpg">
+</div>
+
+<p style="opacity:0.7;">EVERY MOMENT WITH U = SPECIAL AND I CAN'T EXPLAIN ❤️</p>
+
+<h2>Our Chats 💬</h2>
+<div class="chat">
+<div class="bubble">ME: TUM CHUDAIL 😂</div>
+<div class="bubble">YOU: TUM DYN 😤</div>
+<div class="bubble">ME: BUT STILL U ARE MY FAVORITE PERSON AND ONLY CHUDAIL I WANT... ❤️</div>
+</div>
+
+<button onclick="showMessages()">💌 Open when</button>
+
+<div id="messages" style="display:none;">
+<p>WHENEVER U FEEL SAD → I'M ALWAYS WITH U JUST COME TO ME AND I WILL LISTEN ALL THE STUFF ❤️</p>
+<p>WHENEVER U ARE HAPPYY → STAY LIKE THIS HEHEHEHE.... 😊</p>
+<p>AND YYESHHH… I MISS U 😤</p>
+</div>
+
+<button onclick="showFinal()">One final surprise 🎁</button>
+<p style="opacity:0.6;">Scroll slowly till the end…</p>
+
+<div id="final" style="display:none;" class="final">
+    <div id="finalMessage"></div>
+</div>
+
+</div>
+
+<script>
+
+/* LOADER */
+setTimeout(()=>{
+document.getElementById("loader").style.display="none";
+document.getElementById("main").style.display="block";
+typeWriter();
+createParticles();
+},3000);
+
+/* TYPEWRITER */
+let typeIndex = 0;
+let text = "HAPPY WALA BIRTHDAY AFRAHHHH JIII.... ❤️";
+
+function typeWriter(){
+if(typeIndex < text.length){
+document.getElementById("typewriter").innerHTML += text.charAt(typeIndex);
+typeIndex++;
+setTimeout(typeWriter, 70);
+}
+}
+
+/* MUSIC */
+function startMusic(){
+document.getElementById("music").play().catch(()=>{});
+startScenes();
+}
+
+/* PARTICLES */
+function createParticles(){
+for(let i=0;i<40;i++){
+let p=document.createElement("div");
+p.className="particle";
+p.style.left=Math.random()*100+"%";
+p.style.animationDuration=(5+Math.random()*5)+"s";
+document.body.appendChild(p);
+}
+}
+
+/* SCENES */
+function startScenes(){
+setTimeout(()=>show("scene1"),2000);
+setTimeout(()=>show("scene2"),6000);
+setTimeout(()=>show("scene3"),10000);
+}
+
+function show(id){
+document.getElementById(id).style.opacity=1;
+}
+
+/* OPEN WHEN */
+function showMessages(){
+document.getElementById("messages").style.display="block";
+}
+
+/* FINAL MESSAGE */
+const lines = [
+"Dear Afrah,",
+"",
+"I don’t know how to say everything perfectly… but I just wanted to try.",
+"",
+"You are honestly one of the most special parts of my life.",
+"You make everything feel better without even trying.",
+"",
+"Your smile… your small reactions…",
+"and the way you get happy over little things…",
+"it all means a lot to me ❤️",
+"",
+"I know you're busy nowadays…",
+"but I still wanted to make you feel special in my own way 🙂",
+"",
+"No matter what happens in life…",
+"you will always be someone really important to me.",
+"",
+"Happy Birthday Afrah ❤️",
+"",
+"Stay happy always 😊, no matter i am with u or not....",
+"",
+"And yeah… this took me hours…",
+"so ek smile toh banti hai 😤❤️",
+"",
+"Now just smile… because that’s my favorite thing about you 💖"
+];
+
+let lineIndex = 0;
+
+function showFinal(){
+const finalBox = document.getElementById("final");
+const msgBox = document.getElementById("finalMessage");
+
+finalBox.style.display = "block";
+msgBox.innerHTML = "";
+
+lineIndex = 0;
+typeLines();
+}
+
+function typeLines(){
+if(lineIndex >= lines.length) return;
+
+const msgBox = document.getElementById("finalMessage");
+
+msgBox.innerHTML += lines[lineIndex] + "<br><br>";
+lineIndex++;
+
+setTimeout(typeLines, 1000);
+}
+
+</script>
+
+</body>
+</html>
